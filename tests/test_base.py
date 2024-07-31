@@ -1,6 +1,6 @@
 # Tests are defined here
-from ukp_project_template import BaseClass
-from ukp_project_template.subpackage import SubPackageClass
+from gumbel_softmax_layer_skipping_2024 import BaseClass
+from gumbel_softmax_layer_skipping_2024.subpackage import SubPackageClass
 
 def test_template():
     assert True

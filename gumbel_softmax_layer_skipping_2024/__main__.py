@@ -1,4 +1,4 @@
-"""Entry point for ukp_project_template."""
+"""Entry point for gumbel_softmax_layer_skipping_2024."""
 
 from .cli import main  # pragma: no cover
 
