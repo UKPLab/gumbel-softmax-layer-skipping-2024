@@ -7,11 +7,9 @@
 [![Python Versions](https://img.shields.io/badge/Python-3.9-blue.svg?style=flat&logo=python&logoColor=white)](https://www.python.org/)
 [![CI](https://github.com/UKPLab/gumbel-softmax-layer-skipping-2024/actions/workflows/main.yml/badge.svg)](https://github.com/UKPLab/gumbel-softmax-layer-skipping-2024/actions/workflows/main.yml)
 
-This is the official template for new Python projects at UKP Lab. It was adapted for the needs of UKP Lab from the excellent [python-project-template](https://github.com/rochacbruno/python-project-template/) by [rochacbruno](https://github.com/rochacbruno).
+This repository contains the implementation of a trainable layer skipping mechanism using the Gumbel Softmax function. The code is tailored for Llama2. 
 
-> **Abstract:** This repository contains the implementation of a trainable layer skipping mechanism using the Gumbel Softmax function. The code is tailored for Llama2. 
-
-Contact persons: [Ji-Ung Lee](mailto:bungobang@yahoo.de)
+Contact person: [Ji-Ung Lee](mailto:bungobang@yahoo.de)
 
 [UKP Lab](https://www.ukp.tu-darmstadt.de/) | [TU Darmstadt](https://www.tu-darmstadt.de/
 )
@@ -20,8 +18,6 @@ Don't hesitate to send us an e-mail or report an issue, if something is broken (
 
 
 ## Getting Started
-
-> **DO NOT CLONE OR FORK**
 
 If you want to set up this template:
 
@@ -71,39 +67,24 @@ This is how you can use `gumbel_softmax_layer_skipping_2024` from command line:
 $ python -m gumbel_softmax_layer_skipping_2024
 ```
 
-### Expected results
-
-After running the experiments, you should expect the following results:
-
-(Feel free to describe your expected results here...)
-
-### Parameter description
-
-* `x, --xxxx`: This parameter does something nice
-
-* ...
-
-* `z, --zzzz`: This parameter does something even nicer
-
-## Development
-
-Read the FAQs in [ABOUT_THIS_TEMPLATE.md](ABOUT_THIS_TEMPLATE.md) to learn more about how this template works and where you should put your classes & methods. Make sure you've correctly installed `requirements-dev.txt` dependencies
-
 ## Cite
 
-Please use the following citation:
+This work has no accompanying paper. However you may cite the preliminary work on adaptable adapters that served as a basis for this work.
 
 ```
-@InProceedings{smith:20xx:CONFERENCE_TITLE,
-  author    = {Smith, John},
-  title     = {My Paper Title},
-  booktitle = {Proceedings of the 20XX Conference on XXXX},
-  month     = mmm,
-  year      = {20xx},
-  address   = {Gotham City, USA},
-  publisher = {Association for XXX},
-  pages     = {XXXX--XXXX},
-  url       = {http://xxxx.xxx}
+@inproceedings{moosavi-etal-2022-adaptable,
+    title = "Adaptable Adapters",
+    author = "Moosavi, Nafise  and
+      Delfosse, Quentin  and
+      Kersting, Kristian  and
+      Gurevych, Iryna",
+    booktitle = "Proceedings of the 2022 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies",
+    month = jul,
+    year = "2022",
+    address = "Seattle, United States",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2022.naacl-main.274",
+    pages = "3742--3753",
 }
 ```
 
