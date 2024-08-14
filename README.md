@@ -3,7 +3,7 @@
 </p>
 
 # gumbel_softmax_layer_skipping_2024
-[![License](https://img.shields.io/github/license/UKPLab/gumbel-softmax-layer-skipping-2024)](https://opensource.org/licenses/Apache-2.0)
+[![License](https://img.shields.io/github/license/UKPLab/ukp-project-template)](https://opensource.org/licenses/Apache-2.0)
 [![Python Versions](https://img.shields.io/badge/Python-3.9-blue.svg?style=flat&logo=python&logoColor=white)](https://www.python.org/)
 [![CI](https://github.com/UKPLab/gumbel-softmax-layer-skipping-2024/actions/workflows/main.yml/badge.svg)](https://github.com/UKPLab/gumbel-softmax-layer-skipping-2024/actions/workflows/main.yml)
 
