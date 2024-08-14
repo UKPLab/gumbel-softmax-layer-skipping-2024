@@ -16,56 +16,60 @@ Contact person: [Ji-Ung Lee](mailto:bungobang@yahoo.de)
 
 Don't hesitate to send us an e-mail or report an issue, if something is broken (and it shouldn't be) or if you have further questions.
 
+## Project structure
+
+* `configs` &mdash; contains five different configuration files:
+    1. `datasets.py` available datasets, names, and splits
+    2. `fsdp.py` settings for training on multiple GPUs and concerning quantization
+    3. `inference.py` inference configuration; e.g., max_new_tokens, temperature, etc.
+    4. `peft.py` settings for parameter efficient training methods (e.g., LoRA)
+    5. `training.py` settings for training, e.g., learning rate, batch size, etc.
+* `llama_datasets` &mdash; Data loading and preparation routines
+* `model_checkpointing` &mdash; (self explanatory)
+* `neuralnets` &mdash; Implementation of the gumbel softmax for Llama2
+* `utils` &mdash; various utilities for training, saving/loading models, etc.
+* `policies` &mdash; Utilities for FSDP (do not touch)
+* `results` &mdash; Result folder (needs to be created)
 
 ## Getting Started
 
-If you want to set up this template:
+To run the experiments, first create a respective virtual env (using e.g., conda):
 
-1. Request a repository on UKP Lab's GitHub by following the standard procedure on the wiki. It will install the template directly. Alternatively, set it up in your personal GitHub account by clicking **[Use this template](https://github.com/rochacbruno/python-project-template/generate)**.
-2. Wait until the first run of CI finishes. Github Actions will commit to your new repo with a "✅ Ready to clone and code" message.
-3. Delete optional files: 
-    - If you don't need automatic documentation generation, you can delete folder `docs`, file `.github\workflows\docs.yml` and `mkdocs.yml`
-    - If you don't want automatic testing, you can delete folder `tests` and file `.github\workflows\tests.yml`
-4. Prepare a virtual environment:
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install .
-pip install -r requirements-dev.txt # Only needed for development
-```
-5. Adapt anything else (for example this file) to your project. 
+    conda create --name=<envname> python=3.9
+    conda activate <envname>
+    pip install -r requirements.txt
 
-6. Read the file [ABOUT_THIS_TEMPLATE.md](ABOUT_THIS_TEMPLATE.md)  for more information about development.
+We run all our experiments with python 3.9.
 
 ## Usage
 
-### Using the classes
+### Training
 
-To import classes/methods of `gumbel_softmax_layer_skipping_2024` from inside the package itself you can use relative imports: 
+To finetune a base model, you can use torchrun with `finetune_llama2.py`
 
-```py
-from .base import BaseClass # Notice how I omit the package name
+    torchrun --standalone \
+        --nnodes 1 --nproc_per_node 2 finetune_llama2.py \  # Use 2 GPUs
+        --batch_size_training 1 \
+        --model_name "<path-to-model>" \
+        --pure_bf16 \
+        --num_epochs 3 \
+        --output_dir "model_output/llama-7b-trained-gumbel" \
+        --gumbel 1  \
+        --dataset "samsum_dataset"
 
-BaseClass().something()
-```
+Detailed description of all parameters are provided in `configs/training.py`. 
 
-To import classes/methods from outside the package (e.g. when you want to use the package in some other project) you can instead refer to the package name:
+### Inference 
 
-```py
-from gumbel_softmax_layer_skipping_2024 import BaseClass # Notice how I omit the file name
-from gumbel_softmax_layer_skipping_2024.subpackage import SubPackageClass # Here it's necessary because it's a subpackage
+To perform innference, you can use torchrun with `evaluate_llama2.py`.
 
-BaseClass().something()
-SubPackageClass().something()
-```
+    torchrun --standalone \
+        --nnodes 1 --nproc_per_node 1 evaluate_llama2.py \
+        --model_name "model_output/llama-7b-trained-gumbel" \
+        --use_gumbel 1 \
+        --output_dir "results" 
 
-### Using scripts
-
-This is how you can use `gumbel_softmax_layer_skipping_2024` from command line:
-
-```bash
-$ python -m gumbel_softmax_layer_skipping_2024
-```
+This will also measure the overall time taken for inference (normalized by the number of generated tokens) and keep track of the layers that were activated for the Gumbel Softmax (written into `activations.json`). The scores and generated text will be written into `.json` and `.tsv` files.
 
 ## Cite
 

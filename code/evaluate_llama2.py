@@ -108,7 +108,7 @@ def main(**kwargs):
     results_generated = rouge.compute(predictions=predictions_generated, references=references)
     results_generated["time"] = e2e_inference_time
 
-    print("Fixed results: ",results_generated)
+    print("Results: ",results_generated)
     
     results_file = f"{inference_config.model_name.split('/')[-1]}_samsum"
     
