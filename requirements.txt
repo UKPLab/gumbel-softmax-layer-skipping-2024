@@ -17,4 +17,5 @@ bitsandbytes==0.41.1
 pydantic==1.10.9
 fire
 py7zr
-
+nltk
+rouge
