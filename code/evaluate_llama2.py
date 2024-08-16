@@ -106,7 +106,9 @@ def main(**kwargs):
     # Compute scores
     rouge = evaluate.load('rouge')
     results_generated = rouge.compute(predictions=predictions_generated, references=references)
-    results_generated["time"] = e2e_inference_time
+    results_generated["time-total"] = e2e_inference_time
+    results_generated["time-per-token"] = e2e_inference_time_norm
+
 
     print("Results: ",results_generated)
     
