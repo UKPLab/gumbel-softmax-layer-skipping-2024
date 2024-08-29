@@ -10,7 +10,7 @@ Contact person: [Ji-Ung Lee](mailto:bungobang@yahoo.de)
 [UKP Lab](https://www.ukp.tu-darmstadt.de/) | [TU Darmstadt](https://www.tu-darmstadt.de/
 )
 
-Don't hesitate to send us an e-mail or report an issue, if something is broken (and it shouldn't be) or if you have further questions.
+Don't hesitate to send us an e-mail or report an issue, if something is broken (and it shouldn't be) or if you have further questions. Some of the code is also based on the original llama code, so you may find [this repository](https://github.com/meta-llama/llama-recipes) helpful as well.
 
 ## Project structure
 
